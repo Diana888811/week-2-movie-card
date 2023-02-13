@@ -1,0 +1,86 @@
+* {                                 /*elementide vaikimisi käitumise kustutamine*/
+    margin: 0;                      /*vahe elementide vahel*/
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 500px;
+    width: 75%;
+    border: 1px solid green;
+    border-radius: 5px;
+    margin: 2rem auto;                  /*auto joondab keskele*/
+}
+
+.card-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image-container {
+    position: relative;
+    display: inline-block;
+    height: 450px;
+    width: 25%;
+    border: 1px solid orange;
+    border-radius: 5px;
+    margin-right: 5%;
+    left: -50rem;
+    animation: slide-from-left 3.5s ease-in-out forwards;           /*forwards jätab el sinna, kus anim lõppeb*/
+    transition: all 1s;
+}
+
+@keyframes slide-from-left {
+    80% {left: 1rem;}
+    100% {left: 0;}
+}
+
+.card-image-container:hover {
+    transform: scale(1.1);
+    box-shadow: 8px 8px 8px -4px rgb(84, 133, 189);
+}
+
+.card-info-container {
+    display: inline-block;
+    width: 65%;
+    height: 450px;
+    border: 1px solid blue;
+    overflow: hidden;
+}
+
+.card-info-container > * {                    /*rakendab muudatuse abs kõikidele elementidele, mis asub card-info-container'is*/
+    margin: 2rem;
+}
+
+.card-actions {
+    list-style: none;
+}
+
+.card-info-container p {
+    font-style: italic;
+}
+
+.card-info-container h1 {
+    transform: translateY(-500px);
+    animation: slide-from-top 3.5s ease-in-out forwards;
+}
+
+@keyframes slide-from-top {
+
+    80%{transform: translateY(20px);}
+    100%{transform: translateY(0);}
+}
+
+.card-info-container >*:not(h1) {
+    opacity: 0;
+    animation: fade-in 3.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fade-in {
+    100% {
+        opacity: 1;
+    }
+}
